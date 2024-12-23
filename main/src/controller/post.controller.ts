@@ -23,7 +23,8 @@ export class PostController {
    */
   async increaseViewPost(req: Request, res: Response, next: NextFunction) {
     try {
-      const postId = req.query.id?.toString();
+      //Get and lower case postId
+      const postId = req.query.id?.toString().toLowerCase();
       const post = await this.postService.findOne({
         filter: {
           id: postId
@@ -57,7 +58,7 @@ export class PostController {
    */
   async getViewPost(req: Request, res: Response, next: NextFunction) {
     try {
-      const postId = req.query.id?.toString();
+      const postId = req.query.id?.toString().toLowerCase();
       const post = await this.postService.findOne({
         filter: {
           id: postId
@@ -82,7 +83,7 @@ export class PostController {
    */
   async getPostDetail(req: Request, res: Response, next: NextFunction) {
     try {
-      const postId = req.query.id?.toString();
+      const postId = req.query.id?.toString().toLowerCase();
       const post = await this.postService.findOne({
         filter: {
           id: postId
