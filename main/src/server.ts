@@ -49,22 +49,17 @@ app.use(endRequestPipelineMiddleware);
 /**
  * Server
  */
-// AppDataSourceSingleton.getInstance()
-//   .initialize()
-//   .then(async () => {
-//     console.log(chalk.green('Database connected'));
-//     const port = GlobalConfig.server.port || 3000;
-//     app.listen(port, () => {
-//       console.log(chalk.green(`Server is running on http://localhost:${port} in ${GlobalConfig.enviroment} mode`));
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
-const port = GlobalConfig.server.port || 3000;
-app.listen(port, () => {
-  console.log(chalk.green(`Server is running on http://localhost:${port} in ${GlobalConfig.enviroment} mode`));
-});
+AppDataSourceSingleton.getInstance()
+  .initialize()
+  .then(async () => {
+    console.log(chalk.green('Database connected'));
+    const port = GlobalConfig.server.port || 3000;
+    app.listen(port, () => {
+      console.log(chalk.green(`Server is running on http://localhost:${port} in ${GlobalConfig.enviroment} mode`));
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 export default app;

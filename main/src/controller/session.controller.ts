@@ -38,6 +38,8 @@ export class SessionController {
    */
   async tracking(req: Request, res: Response, next: NextFunction) {
     try {
+      console.log('hello');
+
       let sessionKey;
 
       if (req.headers['x-session-key']) {
@@ -47,6 +49,9 @@ export class SessionController {
       }
 
       const trackingReq: TrackingReq = req.body;
+
+      console.log('trackingReq', trackingReq);
+      console.log('sessionKey');
 
       await this.sessionService.tracking(sessionKey, trackingReq);
 
