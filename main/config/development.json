@@ -10,12 +10,13 @@
       "X-HTTP-Method-Override",
       "Content-Type",
       "Accept",
-      "Observe"
+      "Observe",
+      "x-session-key"
     ]
   },
   "helmet": false,
   "enviroment": "development",
   "database": {
-    "sync": true
+    "sync": false
   }
 }
