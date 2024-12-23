@@ -11,7 +11,8 @@
       "Content-Type",
       "Accept",
       "Observe",
-      "x-session-key"
+      "x-session-key",
+      "Authorization"
     ]
   },
   "helmet": false,

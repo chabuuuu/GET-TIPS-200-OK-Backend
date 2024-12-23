@@ -16,6 +16,7 @@
       "Content-Type",
       "Accept",
       "Observe",
+      "x-session-key",
       "Authorization"
     ]
   },
