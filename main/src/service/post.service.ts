@@ -41,6 +41,9 @@ export class PostService extends BaseCrudService<Post> implements IPostService<P
             result.push(post);
           }
         }
+
+        console.log('Get recommend posts from redis');
+
         return result;
       }
     }
