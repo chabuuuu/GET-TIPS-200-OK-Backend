@@ -50,6 +50,8 @@ export class SessionController {
 
       const trackingReq: TrackingReq = req.body;
 
+      trackingReq.post_id = trackingReq.post_id.toLowerCase();
+
       console.log('trackingReq', trackingReq);
       console.log('sessionKey');
 
