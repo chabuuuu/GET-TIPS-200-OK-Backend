@@ -101,8 +101,16 @@ export class PostController {
 
   async getRecommendPosts(req: Request, res: Response, next: NextFunction) {
     try {
+      let sessionKey;
+
+      console.log('req.headers', req.headers);
+
+      if (req.headers['x-session-key']) {
+        sessionKey = req.headers['x-session-key'].toString();
+      }
+
       const topN = req.query.topN ? Number(req.query.topN) : 5;
-      const posts = await this.postService.getRecommendPosts(topN);
+      const posts = await this.postService.getRecommendPosts(topN, sessionKey);
       return res.send_ok('Get recommend posts success', posts);
     } catch (error) {
       next(error);
