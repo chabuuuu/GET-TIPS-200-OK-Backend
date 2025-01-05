@@ -31,9 +31,19 @@ export class SessionService implements ISessionService {
 
       trackingDataList.push(trackingData);
 
-      await redis.set(`${RedisSchemaEnum.TRACKING}:${sessionKey}`, JSON.stringify(trackingDataList));
+      await redis.set(
+        `${RedisSchemaEnum.TRACKING}:${sessionKey}`,
+        JSON.stringify(trackingDataList),
+        'EX',
+        60 * 60 * 24 * 30
+      ); // 1 month
     } else {
-      await redis.set(`${RedisSchemaEnum.TRACKING}:${sessionKey}`, JSON.stringify([trackingData]));
+      await redis.set(
+        `${RedisSchemaEnum.TRACKING}:${sessionKey}`,
+        JSON.stringify([trackingData]),
+        'EX',
+        60 * 60 * 24 * 30
+      ); // 1 month
     }
   }
 
